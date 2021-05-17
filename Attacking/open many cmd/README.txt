@@ -1,0 +1,1 @@
+A code that draws a skull and opens a CMD in an infinite loop which each opens an infinity of CMD until the computer crashes.
