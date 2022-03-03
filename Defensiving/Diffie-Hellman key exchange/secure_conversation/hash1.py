@@ -70,5 +70,3 @@ def hash(some_text):
     for i in range(0, 256):
         listOf265[i] = (listOf265[i] % 100) * (listOf265[listOf265[i*13 % 256] % 255] % 100 + listOf265[i]) % 231
     return lstToStr(listOf265)
-
-print(hash("hello world!"))

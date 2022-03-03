@@ -5,6 +5,7 @@ import sys
 import time
 import hash1
 from termcolor import colored
+import random
 
 ip = ''
 port = 0
@@ -30,3 +31,24 @@ def encyptOrDecrypt(data, keyList):
 
 
 ##--------------------dont work yet----------------------
+
+def reliable_recv(s):
+    data = ''
+    b = 0
+    gplist =[]
+    while True:
+        try:
+
+            b = random.randint(0,200)
+        except ValueError:
+            continue
+
+
+def recv(s):
+    data = ''
+    while True:
+        try:
+            data = data + s.recv(1024).decode().rstrip()
+            return json.loads(data)
+        except ValueError:
+            continue
