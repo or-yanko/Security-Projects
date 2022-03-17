@@ -1,0 +1,40 @@
+“My very photogenic mother died in a freak accident (picnic, lightning) when I was three, and, save for a pocket of warmth in the darkest past, nothing of her subsists within the hollows and dells of memory, over which, if you can still stand my style (I am writing under observation), the sun of my infancy had set: surely, you all know those redolent remnants of day suspended, with the midges, about some hedge in bloom or suddenly entered and traversed by the rambler, at the bottom of a hill, in the summer dusk; a furry warmth, golden midges.”
+|
+“The French are certainly misunderstood: — but whether the fault is theirs, in not sufficiently explaining themselves, or speaking with that exact limitation and precision which one would expect on a point of such importance, and which, moreover, is so likely to be contested by us — or whether the fault may not be altogether on our side, in not understanding their language always so critically as to know “what they would be at” — I shall not decide; but ‘tis evident to me, when they affirm, “That they who have seen Paris, have seen every thing,” they must mean to speak of those who have seen it by day-light.”
+|
+"Dreamt" is the only English word that ends in the letters "mt".|
+Almonds are a member of the peach family.|
+Maine is the only state that has a one-syllable name.|
+There are only four words in the English language which end in "dous": tremendous, horrendous, stupendous, and hazardous.|
+Los Angeles' full name is "El Pueblo de Nuestra Senora la Reina de los Angeles de Porciuncula"|
+A cat has 32 muscles in each ear.|
+An ostrich's eye is bigger than its brain.|
+Tigers have striped skin, not just striped fur.|
+In many advertisements, the time displayed on a watch is 10:10.|
+The characters Bert and Ernie on Sesame Street were named after Bert the cop and Ernie the taxi driver in Frank Capra's "It's a Wonderful Life."|
+A dime has 118 ridges around the edge.|
+The longest one-syllable words in the English language are "scraunched" and "strengthed." Some suggest that "squirreled" could be included, but squirrel is intended to be pronounced as two syllables (squir-rel) according to most dictionaries. "Screeched" and "strengths" are two other long one-syllable words, but they only have 9 letters.
+|
+The longest one-syllable words in the English language are "scraunched" and "strengthed." Some suggest that "squirreled" could be included, but squirrel is intended to be pronounced as two syllables (squir-rel) according to most dictionaries. "Screeched" and "strengths" are two other long one-syllable words, but they only have 9 letters.|
+<button type="button" id="alert-trigger">
+  Trigger Alert
+</button>
+<div id="example" role="alert"></div>
+<!--  The following script element contains the content that will be inserted into the alert element. -->
+<script type="text/template" id="alert-template">
+  <p>Hello</p>
+</script>
+|
+The alert box takes the focus away from the current window, and forces the user to read the message.|
+let carName1 = "Volvo XC60";
+let carName2 = 'Volvo XC60';|
+Install command:
+brew install gcc
+📋
+Also known as: gcc@11, gfortran
+
+GNU compiler collection|
+Many programming languages expose functions similar to print() through their standard libraries, but they let you decide whether to add a newline or not. For example, in Java and C#, you have two distinct functions, while other languages require you to explicitly append \n at the end of a string literal.|
+Note: You may be wondering why the end parameter has a fixed default value rather than whatever makes sense on your operating system.|
+Enter passwords filename:|
+

@@ -1,0 +1,40 @@
+default::DeprecationWarning:__main__|
+ignore::DeprecationWarning|
+ignore::PendingDeprecationWarning|
+ignore::ImportWarning|
+ignore::ResourceWarning|
+warnings.filterwarnings("default", category=DeprecationWarning, module=user_ns.get("__name__"))|
+warnings.simplefilter("default") # Change the filter in this process os.environ["PYTHONWARNINGS"] = "default" # Also affect subprocesses|
+Traceback (most recent call last):
+  File "warnings_warn_raise.py", line 15, in <module>
+    warnings.warn('This is a warning message')
+UserWarning: This is a warning message
+|
+Before the warning
+Traceback (most recent call last):
+  File "warnings_warn.py", line 13, in <module>
+    warnings.warn('This is a warning message')
+UserWarning: This is a warning message
+|
+$ python warnings_filterwarnings_message.py
+
+warnings_filterwarnings_message.py:14: UserWarning: Show this message
+  warnings.warn('Show this message')
+|
+$ python -W "ignore:do not:UserWarning::0" warnings_filtering.py
+
+warnings_filtering.py:12: UserWarning: Show this message
+  warnings.warn('Show this message')
+|
+$ python warnings_filterwarnings_lineno.py
+
+/Users/dhellmann/Documents/PyMOTW/src/PyMOTW/warnings/warnings_filtering.py:12: UserWarning: Show this message
+  warnings.warn('Show this message')
+/Users/dhellmann/Documents/PyMOTW/src/PyMOTW/warnings/warnings_filtering.py:13: UserWarning: Do not show this message
+  warnings.warn('Do not show this message')
+|
+$ python warnings_showwarning.py
+
+WARNING:root:warnings_showwarning.py:24: UserWarning:This is a warning message
+|
+

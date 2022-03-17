@@ -1,0 +1,40 @@
+ZeroDivisionError: division by zero|
+SyntaxError: invalid syntax|
+NameError: name 'spam' is not defined|
+TypeError: can only concatenate str (not "int") to str|
+<class 'Exception'>('spam', 'eggs')('spam', 'eggs')x = spam|
+Handling run-time error: division by zero|
+NameError: HiThere|
+ConnectionError|
+RuntimeError: Failed to open database|
+RuntimeError|
+TypeError: unsupported operand type(s) for /: 'str' and 'str'|
+Traceback (most recent call last):
+File "<pyshell#16>", line 1, in <module>
+            
+from math import cube
+ImportError: cannot import name 'cube'|
+Traceback (most recent call last):
+File "<pyshell#15>", line 1, in <module>
+D1['4']
+KeyError: '4'|
+Traceback (most recent call last):
+File "<pyshell#23>", line 1, in <module>
+next(it)
+StopIteration|
+Traceback (most recent call last):
+File "<pyshell#14>", line 1, in <module>
+int('xyz')
+ValueError: invalid literal for int() with base 10: 'xyz'|
+Traceback (most recent call last):
+File "<pyshell#6>", line 1, in <module
+age
+NameError: name 'age' is not defined|
+Traceback (most recent call last):
+File "<pyshell#8>", line 1, in <module>
+x=100/0
+ZeroDivisionError: division by zero|
+Traceback (most recent call last):
+File "<pyshell#9>", line 1, in <module>            
+name=input('enter your name')
+KeyboardInterrupt
