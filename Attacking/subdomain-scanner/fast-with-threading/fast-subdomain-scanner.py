@@ -7,6 +7,8 @@ import time
 from random import uniform
 from termcolor import colored
 
+from asyncio.timeouts import timeout
+
 
 def slowprint(s, col='green', slow=1./20, isChangeSpeed=False):
     """Print slower"""
@@ -34,7 +36,7 @@ def scan_subdomains(domain):
         subdomain = q.get()
         url = f"http://{subdomain}.{domain}"
         try:
-            requests.get(url)
+            requests.get(url, timeout=4)
         except requests.ConnectionError:
             pass
         else:
