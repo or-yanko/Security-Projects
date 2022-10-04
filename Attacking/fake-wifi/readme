@@ -1,0 +1,7 @@
+install aircrack:
+mac: -> brew install aircrack-ng
+unix: -> sudo apt-get install aircrack-ng
+
+and then write in the terminal:
+-> airmon-ng check kill
+-> airmon-ng start wlan0
