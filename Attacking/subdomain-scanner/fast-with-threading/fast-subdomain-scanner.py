@@ -7,8 +7,6 @@ import time
 from random import uniform
 from termcolor import colored
 
-from asyncio.timeouts import timeout
-
 
 def slowprint(s, col='green', slow=1./20, isChangeSpeed=False):
     """Print slower"""
