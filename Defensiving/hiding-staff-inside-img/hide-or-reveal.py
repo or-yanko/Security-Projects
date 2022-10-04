@@ -1,5 +1,3 @@
-from email.mime import image
-from logging import exception
 import cv2
 import numpy as np
 import sys
@@ -7,7 +5,7 @@ import time
 from random import uniform
 from termcolor import colored
 import imageio as iio
-from os import listdir, system
+from os import system
 
 
 def slowprint(s, col='green', slow=1./20, isChangeSpeed=False):
@@ -103,7 +101,8 @@ def decode(image_name):
 
 
 if __name__ == "__main__":
-    slowprint("[?] hello, whuold you like to encode or decode image? e/d")
+    slowprint(
+        "[?] hello, whuold you like to encode(hide) or decode(reval) text to/from image? e/d")
     ans = input()
     slowprint(
         "[?] please enter filename (it has to be in your current directory!:\n[?] files in your curren folder:")
