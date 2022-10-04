@@ -38,7 +38,7 @@ def scan_subdomains(domain):
         except requests.ConnectionError:
             pass
         else:
-            slowprint("[+] Discovered subdomain: " + url)
+            slowprint("[+] Discovered subdomain: " + url, slow=0)
             with list_lock:
                 discovered_domains.append(url)
         q.task_done()
