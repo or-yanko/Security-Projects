@@ -1,9 +1,13 @@
+from email.mime import image
+from logging import exception
 import cv2
 import numpy as np
 import sys
 import time
 from random import uniform
 from termcolor import colored
+import imageio as iio
+from os import listdir, system
 
 
 def slowprint(s, col='green', slow=1./20, isChangeSpeed=False):
@@ -37,14 +41,15 @@ def to_bin(data):
 
 def encode(image_name, secret_data):
     # read the image
-    image = cv2.imread(image_name)
+    #image = cv2.imread(image_name)
+    image = iio.imread(image_name)
     # maximum bytes to encode
     n_bytes = image.shape[0] * image.shape[1] * 3 // 8
-    print("[*] Maximum bytes to encode:", n_bytes)
+    slowprint("[*] Maximum bytes to encode:", n_bytes)
     if len(secret_data) > n_bytes:
         raise ValueError(
             "[!] Insufficient bytes, need bigger image or less data.")
-    print("[*] Encoding data...")
+    slowprint("[*] Encoding data...")
     # add stopping criteria
     secret_data += "====="
     data_index = 0
@@ -76,7 +81,7 @@ def encode(image_name, secret_data):
 
 
 def decode(image_name):
-    print("[+] Decoding...")
+    slowprint("[+] Decoding...")
     # read the image
     image = cv2.imread(image_name)
     binary_data = ""
@@ -98,10 +103,14 @@ def decode(image_name):
 
 
 if __name__ == "__main__":
-    slowprint("hello, whuold you like to encode or decode image? e/d")
+    slowprint("[?] hello, whuold you like to encode or decode image? e/d")
     ans = input()
     slowprint(
-        "please enter filename (it has to be in your current directory!:")
+        "[?] please enter filename (it has to be in your current directory!:\n[?] files in your curren folder:")
+    try:
+        system("ls")
+    except:
+        system("dir")
     file = input()
 
     if ans == "e":
@@ -110,20 +119,10 @@ if __name__ == "__main__":
         secret_data = input()
         encoded_image = encode(image_name=file, secret_data=secret_data)
         cv2.imwrite(output_image, encoded_image)
+        slowprint("[+] Data encoded successfuly.")
     elif ans == "d":
         decoded_data = decode(file)
-        slowprint("[+] Decoded data:", decoded_data)
+        slowprint("[+] Decoded data: '" + decoded_data+"'")
 
     else:
-        slowprint('invalid input!')
-
-    """input_image = "image.PNG"
-    output_image = "encoded_image.PNG"
-    secret_data = "This is a top secret message."
-    # encode the data into the image
-    encoded_image = encode(image_name=input_image, secret_data=secret_data)
-    # save the output image (encoded image)
-    cv2.imwrite(output_image, encoded_image)
-    # decode the secret data from the image
-    decoded_data = decode(output_image)
-    print("[+] Decoded data:", decoded_data)"""
+        slowprint('[-] invalid input!', 'red')
