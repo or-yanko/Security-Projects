@@ -5,6 +5,8 @@ from termcolor import colored
 import psutil
 import platform
 from datetime import datetime
+import GPUtil
+from tabulate import tabulate
 
 
 def slowprint(s, col='green', slow=1./50, isChangeSpeed=False):
@@ -140,6 +142,28 @@ def print_net():
     slowprint(output)
 
 
+def print_gpu():
+    output = "="*40 + "GPU Details" + "="*40
+    gpus = GPUtil.getGPUs()
+    list_gpus = []
+    for gpu in gpus:
+        gpu_id = gpu.id
+        gpu_name = gpu.name
+        gpu_load = f"{gpu.load*100}%"
+        gpu_free_memory = f"{gpu.memoryFree}MB"
+        gpu_used_memory = f"{gpu.memoryUsed}MB"
+        gpu_total_memory = f"{gpu.memoryTotal}MB"
+        gpu_temperature = f"{gpu.temperature} °C"
+        gpu_uuid = gpu.uuid
+        list_gpus.append((
+            gpu_id, gpu_name, gpu_load, gpu_free_memory, gpu_used_memory,
+            gpu_total_memory, gpu_temperature, gpu_uuid
+        ))
+    slowprint(output)
+    print(tabulate(list_gpus, headers=("id", "name", "load", "free memory", "used memory", "total memory",
+                                       "temperature", "uuid")))
+
+
 if __name__ == "__main__":
     inp = 'h'
     while True:
@@ -152,7 +176,8 @@ if __name__ == "__main__":
 4. enter 'mem' for Memory Information
 5. enter 'swap' for SWAP Memory
 6. enter 'dsk' for Disk Information
-7. enter 'net' for Network Information""")
+7. enter 'net' for Network Information
+8. enter 'gpu' for GPU Details""")
         elif inp == 'sys':
             print_sys()
         elif inp == 'bt':
@@ -167,6 +192,8 @@ if __name__ == "__main__":
             print_dsk()
         elif inp == 'net':
             print_net()
+        elif inp == 'gpu':
+            print_gpu()
         elif inp in ['e', 'q', 'exit', 'quit', 'bye']:
             slowprint('bye bye mate ................')
             exit()
