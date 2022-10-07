@@ -182,14 +182,3 @@ def recive_msg_with_diffy_hellman_key_exchange(sock):
 
 if __name__ == '__main__':
     pass
-"""
-    p1 = generate_big_prime_number()
-    pr = primeRoots(p1)
-    g1 = pr[randint(0, len(pr)-1)]
-    a1 = generate_random_number_in_range()
-    b1 = generate_random_number_in_range()
-    A1 = calculate_capital_A_and_B(g1, p1, a1)
-    B1 = calculate_capital_A_and_B(g1, p1, b1)
-    ka = calculate_key(p1, B1, a1)
-    kb = calculate_key(p1, A1, b1)
-    print(f'p:{p1}, g:{g1}\na:{a1}, b:{b1}\nka:{ka} , kb:{kb}\n')"""
