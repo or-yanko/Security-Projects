@@ -138,9 +138,9 @@ def send_msg_with_diffy_hellman_key_exchange(sock, msg):
 
     # send g p A
     send_msg(sock, str(g))
-    time.sleep(0.01)
+    time.sleep(0.001)
     send_msg(sock, str(p))
-    time.sleep(0.01)
+    time.sleep(0.001)
     send_msg(sock, str(A))
 
     # recive B
