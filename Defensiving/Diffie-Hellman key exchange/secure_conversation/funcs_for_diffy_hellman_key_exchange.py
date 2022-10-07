@@ -195,7 +195,7 @@ def recive_msg_with_diffy_hellman_key_exchange_and_hash_confirmation(sock):
     hash_data = recive_msg_with_diffy_hellman_key_exchange(sock)
     if hash1.hash_by_sh256(data) == hash_data:
         return data
-    return "someone infected your data..."
+    return "someone infected your data... hash authentication failed!"
 
 
 if __name__ == '__main__':
