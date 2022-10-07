@@ -1,6 +1,7 @@
 from random import randint
 import socket
 import time
+import hash1
 
 # ------------------------------------------------------------------------------------------------
 # ------------ generators, calculasions and encrypting for diffie helman -------------------------
@@ -109,9 +110,7 @@ def socket_after_connection_listen_as_a_server(SERVER_HOST="0.0.0.0", SERVER_POR
 
 def connect_to_server_socket(SERVER_HOST="127.0.0.1", SERVER_PORT=1234):
     s = socket.socket()
-    #print(f"[*] Connecting to {SERVER_HOST}:{SERVER_PORT}...")
     s.connect((SERVER_HOST, SERVER_PORT))
-    #print("[+] Connected.")
     return s
 
 
@@ -136,6 +135,7 @@ def send_msg_with_diffy_hellman_key_exchange(sock, msg):
     A = calculate_capital_A_and_B(g, p, a)
 
     # send g p A
+    time.sleep(0.001)
     send_msg(sock, str(g))
     time.sleep(0.001)
     send_msg(sock, str(p))
@@ -157,7 +157,8 @@ def send_msg_with_diffy_hellman_key_exchange(sock, msg):
 
 def recive_msg_with_diffy_hellman_key_exchange(sock):
     # recive g p A
-    g = int(recive_msg(sock))
+    x = recive_msg(sock)
+    g = int(x)
     p = int(recive_msg(sock))
     A = int(recive_msg(sock))
 
@@ -178,6 +179,23 @@ def recive_msg_with_diffy_hellman_key_exchange(sock):
     decrypted_msg = xorDataWithKey(encrypted_msg, key)
 
     return decrypted_msg
+
+# ------------------------------------------------------------------------------------------------
+# ----------------------- diffie helman with hashing staff ---------------------------------------
+# ------------------------------------------------------------------------------------------------
+
+
+def send_msg_with_diffy_hellman_key_exchange_and_hash_confirmation(sock, msg):
+    send_msg_with_diffy_hellman_key_exchange(sock, msg)
+    send_msg_with_diffy_hellman_key_exchange(sock, hash1.hash_by_sh256(msg))
+
+
+def recive_msg_with_diffy_hellman_key_exchange_and_hash_confirmation(sock):
+    data = recive_msg_with_diffy_hellman_key_exchange(sock)
+    hash_data = recive_msg_with_diffy_hellman_key_exchange(sock)
+    if hash1.hash_by_sh256(data) == hash_data:
+        return data
+    return "someone infected your data..."
 
 
 if __name__ == '__main__':
