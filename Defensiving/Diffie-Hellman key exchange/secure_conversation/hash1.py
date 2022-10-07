@@ -1,5 +1,14 @@
 #Date: 18/5/2021
-#Author: or yanko
+# Author: or yanko
+import hashlib
+
+
+def hash_by_sh256(some_text):
+    my_string_bits = some_text.encode('utf-8')
+    secret_thing = hashlib.sha256(my_string_bits)
+    hash = secret_thing.hexdigest()
+    return str(hash)
+
 
 def lstToStr(list):
     s = ""
@@ -7,11 +16,12 @@ def lstToStr(list):
         s += chr(i % 95 + 32)
     return s
 
+
 def hash(some_text):
-    #dont deal with new lines
+    # dont deal with new lines
     some_text = some_text.replace("\n", " ")
 
-    #split the str to list of ascii values list from the str (every list length is 256 chars)
+    # split the str to list of ascii values list from the str (every list length is 256 chars)
     strAsciiList = []
     listOfAsciiLists = []
     i = 0
@@ -25,7 +35,7 @@ def hash(some_text):
             i = 0
     listOfAsciiLists.append(strAsciiList)
 
-    #fill last list
+    # fill last list
     if len(listOfAsciiLists) == 1:
         i = 0
         while len(listOfAsciiLists[0]) != 256:
@@ -37,8 +47,7 @@ def hash(some_text):
             listOfAsciiLists[-1].append(lst[len(listOfAsciiLists[-1])//3])
             i = len(strAsciiList)
 
-
-    #merge all the lists to list of integers
+    # merge all the lists to list of integers
     listOf265 = listOfAsciiLists[0]
     addList = listOfAsciiLists[0]
 
@@ -51,15 +60,19 @@ def hash(some_text):
                 else:
                     placeInLstOfLst = n
                 if i % 3 == 0:
-                    listOf265[placeInFinal] = listOf265[placeInFinal] & (listOfAsciiLists[i])[placeInLstOfLst]
+                    listOf265[placeInFinal] = listOf265[placeInFinal] & (listOfAsciiLists[i])[
+                        placeInLstOfLst]
                 elif i % 3 == 1:
-                    listOf265[placeInFinal] = listOf265[placeInFinal] ^ (listOfAsciiLists[i])[placeInLstOfLst]
+                    listOf265[placeInFinal] = listOf265[placeInFinal] ^ (listOfAsciiLists[i])[
+                        placeInLstOfLst]
                 else:
-                    listOf265[placeInFinal] = listOf265[placeInFinal] | (listOfAsciiLists[i])[placeInLstOfLst]
+                    listOf265[placeInFinal] = listOf265[placeInFinal] | (listOfAsciiLists[i])[
+                        placeInLstOfLst]
                 addList[placeInFinal] += (listOfAsciiLists[i])[placeInLstOfLst]
         for n in range(0, 256):
             if listOf265[n] % 4 == 0:
-                listOf265[n] = (listOf265[n] + addList[255-n] ^ (listOfAsciiLists[1][addList[n] % 240])) % 150
+                listOf265[n] = (listOf265[n] + addList[255-n] ^
+                                (listOfAsciiLists[1][addList[n] % 240])) % 150
             elif listOf265[n] % 4 == 1:
                 listOf265[n] = (listOf265[n] ^ addList[255-n]) % 150
             elif listOf265[n] % 4 == 2:
@@ -68,5 +81,6 @@ def hash(some_text):
                 listOf265[n] = (listOf265[n] | addList[255-n]) % 150
 
     for i in range(0, 256):
-        listOf265[i] = (listOf265[i] % 100) * (listOf265[listOf265[i*13 % 256] % 255] % 100 + listOf265[i]) % 231
+        listOf265[i] = (listOf265[i] % 100) * (listOf265[listOf265[i*13 %
+                                                                   256] % 255] % 100 + listOf265[i]) % 231
     return lstToStr(listOf265)
