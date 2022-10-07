@@ -1,5 +1,5 @@
 import funcs_for_diffy_hellman_key_exchange as f
 import socket
 socket = f.connect_to_server_socket()
-f.send_msg_with_diffy_hellman_key_exchange(
+f.send_msg_with_diffy_hellman_key_exchange_and_hash_confirmation(
     socket, 'msg from client.\nhello world.')
