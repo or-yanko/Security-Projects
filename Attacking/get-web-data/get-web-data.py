@@ -144,7 +144,7 @@ domain_name = urlparse(url).netloc
 crawl(url)
 
 
-print("Total script files in the page:", len(script_files))
+print("\n\nTotal script files in the page:", len(script_files))
 print("Total CSS files in the page:", len(css_files))
 print("Total Internal links:", len(internal_urls))
 print("Total External links:", len(external_urls))
