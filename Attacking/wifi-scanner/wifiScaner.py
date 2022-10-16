@@ -29,7 +29,7 @@ def display_result(result):
         print("{}\t{}".format(i["ip"], i["mac"]))
 
 
-def slowprint(s, col='green', slow=1./10, isChangeSpeed=False):
+def slowprint(s, col='green', slow=1./100, isChangeSpeed=False):
     """Print slower"""
     if isChangeSpeed == False:
         for c in s + '\n':
