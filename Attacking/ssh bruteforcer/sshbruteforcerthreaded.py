@@ -34,4 +34,4 @@ with open(input_file, 'r') as file:
         password = line.strip()
         t = threading.Thread(target=ssh_connect, args=(password,))
         t.start()
-        time.sleep(0.5)
+        time.sleep(0.1)
